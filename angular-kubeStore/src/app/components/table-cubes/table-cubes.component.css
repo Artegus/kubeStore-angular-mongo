@@ -1,0 +1,25 @@
+.centrada {
+    z-index: 2;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -200px;
+}
+
+img.cartel {
+    width: 350px;
+    height: 350px;
+}
+
+img.acciones {
+    width: 50px;
+    height: 50px;
+}
+
+img.cerrar {
+    width: 30px;
+    height: 30px;
+}

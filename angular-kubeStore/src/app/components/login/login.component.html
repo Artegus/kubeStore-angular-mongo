@@ -1,0 +1,13 @@
+<div class="formularioAlta">
+    <h3>LOGIN</h3>
+    <p>
+        User:<input type="text" [(ngModel)]="user.code" placeholder="code">
+    </p>
+    <p>
+        Password:<input type="password" [(ngModel)]="user.key">
+    </p>
+    <p>
+        <button type="button" (click)="access()">ACCEDER</button>
+        <button type="button" (click)="cancel()">CANCELAR</button>
+    </p>
+</div>

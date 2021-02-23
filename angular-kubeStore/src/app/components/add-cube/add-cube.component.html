@@ -1,0 +1,33 @@
+<div class="formularioAlta">
+    <h3>{{title}}</h3>
+    <p> Name:
+        <input type="text" [(ngModel)]="cube.name" placeholder="name">
+    </p>
+    <p> Category:
+        <input type="text" [(ngModel)]="cube.category" placeholder="category">
+    </p>
+    <p> Quantity:
+        <input type="text" [(ngModel)]="cube.quantity" placeholder="quantity">
+    </p>
+    <p> Brand:
+        <input type="text" [(ngModel)]="cube.brand" placeholder="brand">
+    </p>
+    <p> Dimensions:
+        <input type="text" [(ngModel)]="cube.dimensions" placeholder="dimensions">
+    </p>
+    <p> Purchase price:
+        <input type="text" [(ngModel)]="cube.purchasePrice" placeholder="Purchase price">
+    </p>
+    <p> Sale price:
+        <input type="text" [(ngModel)]="cube.salePrice" placeholder="Sale price">   
+    </p>
+    <p> Photo:
+        <input type="text" [(ngModel)]="cube.photo" placeholder="photo">   
+    </p>
+    <p> 
+        <button type="button" (click)="addNew()" *ngIf="cube._id==0">Add</button>
+        <button type="button" (click)="edit()" *ngIf="cube._id!=0">Save</button>
+        <button type="button" (click)="cancel()">Cancel</button>    
+    </p>
+</div>
+    
