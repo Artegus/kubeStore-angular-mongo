@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const router = require('./routes/cubes');
+const jwt = require('jsonwebtoken');
+
+const routerLogin = require('./routes/login');
+const routerCubes = require('./routes/cubes');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
@@ -12,7 +15,15 @@ const mongoUri = "mongodb://localhost:27017/dweb";
 
 let db = mongoose.connection;
 
-let connectWithRetry= function() {
+// JWT
+function generateAccessToken(username) {
+  return jwt.sign(username, 'test', { expiresIn: '240s' })
+}
+// JWT
+
+
+
+let connectWithRetry = function () {
   return mongoose.connect(mongoUri, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
@@ -31,13 +42,27 @@ app.use(bodyParser.urlencoded({ extended: false }));
 connectWithRetry();
 
 db.on('error', () => {
-	setTimeout(() => {
-		console.log('Fallo en la conexión a la BBD. Se reintenta.');
-		connectWithRetry();
-      }, dbRetryTime);
+  setTimeout(() => {
+    console.log('Fallo en la conexión a la BBD. Se reintenta.');
+    connectWithRetry();
+  }, dbRetryTime);
 });
 
 db.on('connected', () => {
-  app.use(router);
+  app.use(routerCubes);
+
+  // Sin base de datos
+
+  app.post('/login', (req, res) => {
+    if( !(req.body.username  === 'oscar' && req.body.password === '1234')){
+       res.status(401).send({ error: 'usuario o contraseña inválidos'})
+       return
+     }  
+     const token = generateAccessToken({ username: req.body.username });
+     res.json(token);
+   });
+
+
+  //app.user(routerLogin);
   app.listen(port, () => console.log(`Todo OK. Servidor escuchando en ${port}!`))
 });
