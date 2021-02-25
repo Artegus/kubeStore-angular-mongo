@@ -1,9 +1,7 @@
 require('../models/user');
 
-
-
 const mongoose = require('mongoose');
-const users = mongoose.model('User');
+const users = mongoose.model('Users');
 
 
 async function verifyUser(req, res) {
