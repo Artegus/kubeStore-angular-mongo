@@ -15,8 +15,6 @@ async function verifyUser(req, res) {
         const token = generateAccessToken({ username: req.body.username });
         res.json(token);
 
-
-
     } catch (error) {
         return res.status(400).send({
             status: 'failure'

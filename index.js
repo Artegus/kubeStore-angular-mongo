@@ -51,27 +51,6 @@ db.on('error', () => {
 db.on('connected', () => {
   app.use(routerCubes);
 
-  app.use((req, res, next) => {
-    res.status(404);
-
-    if (req.accepts('html')) {
-      res.render('404', { url: '404.html' });
-      return;
-    }
-  })
-
-  // Sin base de datos
-
-  app.post('/login', (req, res) => {
-    if (!(req.body.username === 'oscar' && req.body.password === '1234')) {
-      res.status(401).send({ error: 'usuario o contraseña inválidos' })
-      return
-    }
-    const token = generateAccessToken({ username: req.body.username });
-    res.json(token);
-  });
-
-
   //app.user(routerLogin);
   app.listen(port, () => console.log(`Todo OK. Servidor escuchando en ${port}!`))
 });

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarruselComponent implements OnInit {
 
-  images = ["/assets/foto1.jpg","/assets/foto2.jpg","/assets/foto3.jpg"];
+  images = ["/assets/cube.png","/assets/cube_1.jpeg","/assets/cube_2.jpg"];
 
   constructor() { }
 
